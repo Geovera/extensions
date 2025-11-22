@@ -148,4 +148,10 @@ export default new class sukebei extends AbstractSource {
 
     }
 
+    async test () 
+    {
+        const res = await fetch(this.url)
+        return res.ok
+    }
+
 }()
