@@ -4,7 +4,7 @@ import AbstractSource from './abstract.js'
 
 export default new class sukebei extends AbstractSource {
 
-    url = atob('aHR0cHM6Ly9mZWVkLmFuaW1ldG9zaG8ub3JnL2pzb24=')
+    url = atob('aHR0cHM6Ly9zdWtlYmVpLm55YWEuc2kv')
 
 
 
