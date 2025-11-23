@@ -23,7 +23,8 @@ export default new class sukebei extends AbstractSource {
 
         headers.append('Access-Control-Allow-Origin', 'https://sukebei.nyaa.si');
 
-        const res = await fetch(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`,
+        const link = encodeUriComponent(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`)
+        const res = await fetch(`https://api.allorigins.win/get?url=${link}`,
                                 {
                                  headers: headers   
                                 })
