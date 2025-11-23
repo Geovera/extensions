@@ -17,7 +17,6 @@ export default new class sukebei extends AbstractSource {
         if (!titles?.length) throw new Error('No titles provided')
 
         const link = encodeURIComponent(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`)
-        console.log('Hello world')
         console.log(link)
         const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=?url=${link}`)
 
@@ -27,19 +26,19 @@ export default new class sukebei extends AbstractSource {
 
         // Match all <tr> elements with the classes "default" or "success"
 
-        const items = html.match(/<tr class="(default|success)"[\s\S]+?<\/tr>/g) || []
+        const items = html.match(/<tr class=\\"(default|success)\\"[\s\S]+?<\/tr>/g) || []
 
-    
+        console.log(items)
 
         return items.map(item => {
 
             // Extract the title
 
-            const titleMatch = item.match(/title="([^"]+)">([^<]+)<\/a>/)
+            const titleMatch = item.match(/title=\\"([^"]+)\\">([^<]+)<\/a>/)
 
             const title = titleMatch ? titleMatch[2] : 'Unknown Title'
 
-    
+            console.log(title)
 
             // Extract the info hash from the magnet link
 
@@ -57,7 +56,7 @@ export default new class sukebei extends AbstractSource {
 
             // Extract the size and convert it to bytes (B)
 
-            const sizeMatch = item.match(/<td class="text-center">([\d\.]+) ([MGiB]+)<\/td>/)
+            const sizeMatch = item.match(/<td class=\\"text-center\\">([\d\.]+) ([MGiB]+)<\/td>/)
 
             let size = 0
 
