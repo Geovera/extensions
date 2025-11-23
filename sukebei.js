@@ -16,7 +16,7 @@ export default new class sukebei extends AbstractSource {
 
         if (!titles?.length) throw new Error('No titles provided')
 
-        const link = encodeUriComponent(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`)
+        const link = encodeURIComponent(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`)
         console.log('Hello world')
         console.log(link)
         const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=?url=${link}`)
