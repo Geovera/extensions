@@ -16,9 +16,17 @@ export default new class sukebei extends AbstractSource {
 
         if (!titles?.length) throw new Error('No titles provided')
 
-    
+        let headers = new Headers();
 
-        const res = await fetch(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`)
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+
+        headers.append('Access-Control-Allow-Origin', 'https://sukebei.nyaa.si');
+
+        const res = await fetch(`${this.url}?f=0&c=1_0&q=${titles[0]}&p=1`,
+                                {
+                                 headers: headers   
+                                })
 
         const html = await res.text()
 
