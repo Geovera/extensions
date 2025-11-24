@@ -20,14 +20,16 @@ export default new class sukebei extends AbstractSource {
         console.log(link)
         const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=?url=${link}`)
 
+        console.log('wtf');
         const html = await res.text()
-
+        console.log('html')
     
 
         // Match all <tr> elements with the classes "default" or "success"
 
         const items = html.match(/<tr class=\\"(default|success)\\"[\s\S]+?<\/tr>/g) || []
 
+        console.log('items')
         console.log(items)
 
         return items.map(item => {
